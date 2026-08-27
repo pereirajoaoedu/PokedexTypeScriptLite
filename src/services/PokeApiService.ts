@@ -10,14 +10,15 @@ export class PokemonApiService {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${NomeOuId.toLowerCase()}`);
 
             if (!response.ok) {
-                throw new Error(`Erro ao buscar Pokémon com Nome ou ID ${NomeOuId}: ${response.statusText}`);
+                console.log(`[ERRO] Pokémon não encontrado.`);
+                return [];
             }
 
-            const dados: PokemonApiResponse[] = await response.json();
-            return dados.map((pokemon) => PokemonResumido.fromApiResponse(pokemon));
+            const dados: PokemonApiResponse = await response.json();
+            return [PokemonResumido.fromApiResponse(dados)];
         } catch (error) {
-            console.error(`Erro ao buscar Pokémon com Nome ou ID: ${NomeOuId}:`, error);
-            throw error;
+            console.error(`[ERRO] Não foi possível buscar o Pokémon. Motivo: `, error);
+            return [];
         }
     }
 }
