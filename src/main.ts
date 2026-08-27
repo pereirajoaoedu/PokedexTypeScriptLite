@@ -5,13 +5,21 @@ import { PokemonApiService } from './services/PokeApiService.js';
 
 async function main(): Promise<void> {
     const terminalController = new TerminalController();
+    const pokeApiService = new PokemonApiService();
     var resposta = await terminalController.iniciar();
 
-    if (resposta) {
-        const pokeApiService = new PokemonApiService();
-        await pokeApiService.buscarPokemon(resposta);
-    }
+    try {
+        var encerrarBusca = "N";
 
+            const pokemon = await pokeApiService.buscarPokemon(resposta);
+
+            pokemon.forEach(p => {
+                console.log(p.apresentarPokemon());
+            });
+
+    } catch (error) {
+        console.error('Erro ao executar a aplicação.', error);
+    }
 }
 
 main();

@@ -1,5 +1,7 @@
 // Interfaces/Types e Classes de Entidade. Molde rigoroso dos atributos consumidos da API.
 
+import type { PokemonApiResponse } from "../interfaces/PokemonApi.js";
+
 export class PokemonResumido {
     public id: number;
     public nome: string;
@@ -15,9 +17,25 @@ export class PokemonResumido {
         this.tipos = tipos;
     }
 
-    static fromApiResponse(apiResponse: any): PokemonResumido {
-        const tipos = apiResponse.types.map((typeInfo: any) => typeInfo.type.name);
+    static fromApiResponse(apiResponse: PokemonApiResponse): PokemonResumido {
+        const tipos = apiResponse.types.map((typeInfo: { type: { name: string } }) => typeInfo.type.name);
         return new PokemonResumido(apiResponse.id, apiResponse.name, apiResponse.height, apiResponse.weight, tipos);
+    }
+
+    apresentarPokemon(): string {
+        const msg = [ "Pokémon Identificado!",
+            `ID: ${this.id}`,
+            `Nome: ${this.nome}`,
+            `Altura: ${this.altura}`,
+            `Peso: ${this.peso}`,
+            `Tipos: ${this.tipos.join(", ")}`];
+
+        return msg.join("\n");
+    }
+    
+    salvarPokemon(): string {
+        // Implementar.
+        return "";
     }
 }
 
