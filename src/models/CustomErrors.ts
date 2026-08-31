@@ -1,1 +1,7 @@
-// Classes de Exceções Customizadas que estendem Error (ex: APIError, LocalBoxError).
+export class CustomErrors {
+
+    static msgRespostaInvalida() {
+        console.log("Resposta informada inválida, por favor, tente novamente!")
+    }
+
+}

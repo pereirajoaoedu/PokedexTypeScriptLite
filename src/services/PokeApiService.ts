@@ -1,7 +1,6 @@
-// Camada de Integração Externa (fetch nativo). Retorna Promises tipadas com Interfaces.
-
 import type { PokemonApiResponse } from "../interfaces/PokemonApi.js";
 import { PokemonResumido } from "../models/Pokemon.js";
+import { Capitalizar } from "../utils/textFormatters.js";
 
 export class PokemonApiService {
 
@@ -15,7 +14,16 @@ export class PokemonApiService {
             }
 
             const dados: PokemonApiResponse = await response.json();
-            return [PokemonResumido.fromApiResponse(dados)];
+            const tiposCapitalizados = dados.types.map((item: any) => Capitalizar(item.type.name));
+
+            return [new PokemonResumido(
+                dados.id,
+                Capitalizar(dados.name),
+                dados.height,
+                dados.weight,
+                tiposCapitalizados
+            )];
+
         } catch (error) {
             console.error(`[ERRO] Não foi possível buscar o Pokémon. Motivo: `, error);
             return [];
