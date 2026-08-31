@@ -1,0 +1,21 @@
+[
+  {
+    "id": 6,
+    "nome": "Charizard",
+    "tipos": [
+      "Fire",
+      "Flying"
+    ],
+    "altura": 17,
+    "peso": 905
+  },
+  {
+    "id": 5,
+    "nome": "Charmeleon",
+    "tipos": [
+      "Fire"
+    ],
+    "altura": 11,
+    "peso": 190
+  }
+]

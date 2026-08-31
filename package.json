@@ -1,0 +1,25 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.3.0",
+    "tsx": "^4.23.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pereirajoaoedu/PokedexTypeScriptLite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pereirajoaoedu/PokedexTypeScriptLite/issues"
+  },
+  "homepage": "https://github.com/pereirajoaoedu/PokedexTypeScriptLite#readme"
+}
