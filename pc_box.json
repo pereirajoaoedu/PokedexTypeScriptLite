@@ -17,5 +17,14 @@
     ],
     "altura": 11,
     "peso": 190
+  },
+  {
+    "id": 25,
+    "nome": "Pikachu",
+    "tipos": [
+      "Electric"
+    ],
+    "altura": 4,
+    "peso": 60
   }
 ]
